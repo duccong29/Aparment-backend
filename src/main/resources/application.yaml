@@ -1,0 +1,63 @@
+#  spring.application.name=springboot-restful-webservices
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/apartments"
+    driverClassName: "com.mysql.cj.jdbc.Driver"
+    username: root
+    password: 123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+  jwt:
+    signerKey: "huVDmdfmV0UcHOvREnyywZdtALSjCfpeKGj+ig1ayuCFtenw9wex46hNiQHpO+rt"
+    valid-duration: 86400 # in second
+    refreshable-duration: 36000 # in seconds
+
+  kafka:
+    bootstrap-servers: localhost:9094
+    consumer:
+      group-id: apartments-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+  outbound:
+    identity:
+      client-id: ""
+      client-secret: ""
+      redirect-uri: "http://localhost:3000/authenticate"
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: duccongsos@gmail.com
+    password: ofwc jrbf urip ufkx
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+
+  payment:
+    vnpay:
+      tmn-code: XMXG1YN5
+      secret-key: "FMXQ2YLDR9L2JQGR1PPZTRRY9F0MWRBR"
+      init-url: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+      return-url: http://localhost:8080/api/payment/return
+      timeout-minutes: 1500
