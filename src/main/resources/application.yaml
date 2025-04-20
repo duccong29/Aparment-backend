@@ -21,7 +21,7 @@ spring:
       max-request-size: 2MB
 
   jwt:
-    signerKey: "huVDmdfmV0UcHOvREnyywZdtALSjCfpeKGj+ig1ayuCFtenw9wex46hNiQHpO+rt"
+    signerKey: ""
     valid-duration: 86400 # in second
     refreshable-duration: 36000 # in seconds
 
@@ -47,8 +47,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: duccongsos@gmail.com
-    password: ofwc jrbf urip ufkx
+    username: 
+    password: 
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
@@ -56,8 +56,8 @@ spring:
 
   payment:
     vnpay:
-      tmn-code: XMXG1YN5
-      secret-key: "FMXQ2YLDR9L2JQGR1PPZTRRY9F0MWRBR"
+      tmn-code: 
+      secret-key: ""
       init-url: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
       return-url: http://localhost:8080/api/payment/return
       timeout-minutes: 1500
